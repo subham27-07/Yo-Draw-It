@@ -2,7 +2,7 @@
   <meta charset="utf-8">
 
   <head>
-    <title>My quiz</title>
+    <title>You Draw It: Just How Bad Is the Drug Overdose Epidemic?</title>
     <meta name="viewport" content="width=device-width,user-scalable=yes,initial-scale=1,minimum-scale=1">
     <link rel="stylesheet" href="https://ee2dev.github.io/ydi/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
@@ -20,13 +20,8 @@
      
       var globals = { 
         default: "en",
-        header: "A quiz about datasketches",
-        subHeader: "Try to guess to right answer and see how good you are!",
-        // drawAreaTitle: "Your\nguess",
-        // drawLine: "drag the line\nfrom here to the end",
-        // drawBar: "drag the bar\nto the estimated height",        
-        // resultButtonText: "Show me the result!", 
-        // resultButtonTooltip: "Draw your guess. Upon clicking here, you see if you're right.",
+        header: "",
+        
         scoreButtonText: "I want to see how well I did on the datasketches quiz!",
         // scoreButtonTooltip: "Click here to see your result",
         // scoreTitle: "Your result:",
@@ -36,36 +31,161 @@
         {lower: 81, upper: 101, html: 'Wow, what a score! You are amazing!!<br>Thank you for taking the quiz!'},],
       };
 
-      // ----- for additional questions, copy FROM here
-     
-      // ----- for additional questions, copy TO here     
+    
 
       // ----- for additional questions, copy FROM here
       question = {
-        heading: "Datasketches - commitment to commit",
-        subHeading: "<b>Question (3/3)</b>:<br><div class ='ta-left'>Given their skill, Nadieh and Shirley are in high demand and as such very busy people! \
-        Working on dataketches as a <i>side</i> project means endurance, dedication, sweat and focus whenever there is limited \
-        time in between <i>main</i> projects.</div> <br><br> How many commits per month have Nadieh & Shirley made<br> \
-        in their datasketches github repository in 2018?",
-        resultHtml: "Over the course of these 54 commits, 86,132 lines have been added and 35,568 lines have been deleted.",
+        heading: "You Draw It: Just How Bad Is the Drug Overdose Epidemic?",
+        subHeading: "<br><div class ='ta-left'>How does the surge in drug overdoses compare with other causes of death in the U.S.? Draw your guesses on the charts below.</div> <br><br> Since 1990, the number of Americans who have died every year from car accidents... <br> \
+        ",
+        resultHtml: "… has dipped, risen slowly but then declined, in part as a result of safer cars and improved road safety. Recessions and increasing gas prices can sometimes lead to a temporary drop in car accident fatalities, as seen in the late 2000s. Deaths are on the rise again recently, perhaps because of more distracted driving.",
         // unit: "%",
         precision: 0,
-        lastPointShownAt: "2002",
+        lastPointShownAt: "1994",
         // yAxisMin: ,
-        yAxisMax: 34, 
+        yAxisMax: 60000, 
         data: [
-          {2000: 11}, 
-          {2001: 1}, 
-          {2002: 10}, 
-          {2003: 2},
-          {2004: 1}, 
-          {2005: 8}, 
-          {2006: 29},
-          {2007: 20},
+          {1990: 44600}, 
+          {1992: 39205}, 
+          {1994: 40716},
+          {1996: 42065},
+          
+          {1998: 41501},
+         
+          {2000: 41945},
+          
+          {2002: 43005},
+         
+          {2004: 42836}, 
+        
+          {2006: 42708},
+       
+          {2008: 37423},
+         
+          {2010: 32999},
+          
+          {2012: 33782},
+        
+          {2014: 32744},
+         
+          {2016: 37806},
+      
+          {2018: 36835},
+
+          {2020: 38824},
+          {2021: 42915},
+          
           ],
       };
       questions.push(question);
       // ----- for additional questions, copy TO here  
+
+      // ----- for additional questions, copy FROM here
+      question = { 
+        heading: "Since 1990, the number of Americans who have died every year from guns...",
+        subHeading: "", 
+        data: [
+          {"1998": 32000}, 
+          {"2002": 22000}, 
+          {"2006": 18000}, 
+          {"2010": 18500}, 
+          {"2014": 25000}, 
+          {"2018": 22400},
+          ],
+        resultHtml: "… has been slowly rising after a drop in the 1990s. Gun deaths, most of which are suicides, increased by 8 percent in 2015, the largest single-year jump since the C.D.C. began keeping computerized death records.",
+        // unit: "Pts",
+        lastPointShownAt: "2002", 
+        precision: 0, 
+        // yAxisMin: ,
+        yAxisMax: 50000,
+      };
+      questions.push(question);
+      // ----- for additional questions, copy TO here   
+
+      // ----- for additional questions, copy FROM here
+      question = { 
+        heading: "Since 1990, the number of Americans who have died every year from H.I.V...",
+        subHeading: "", 
+        data: [
+        {2008: 18465},
+        {2009: 17955},
+         {2010: 16701},
+         {2011: 16251},
+         
+         {2012: 15980},
+         {2013: 15880},
+       
+         {2014: 16128},
+         {2015: 15818},
+        
+         {2016: 16371},
+         {2017: 16350},
+     
+         {2018: 16209},
+         {2019: 16230},
+
+          ],
+        resultHtml: "… has spiked and then plummeted. By the mid-1990s, over 40,000 people were dying from H.I.V. each year, but death rates fell sharply with the development of antiretroviral treatments. Nevertheless, H.I.V. remains a leading cause of death for those 25 to 44, particularly among black men.",
+        // unit: "Pts",
+        lastPointShownAt: "2010", 
+        precision: 0, 
+        // yAxisMin: ,
+        yAxisMax: 30000,
+      };
+      questions.push(question);
+      // ----- for additional questions, copy TO here   
+
+      // ----- for additional questions, copy FROM here
+      question = { 
+        heading: "Since 1999, the number of Americans who have died every year from drug overdoses...",
+        subHeading: "", 
+        data: [
+          {1999: 16894},
+          
+          {2000: 17415},
+         
+          {2001: 19394},
+          
+          {2002: 43005},
+          {2003: 43005},
+         
+          {2004: 42836},
+          {2005: 43005}, 
+        
+          {2006: 42708},
+          {2007: 43005},
+       
+          {2008: 37423},
+          {2009: 43005},
+         
+          {2010: 32999},
+          {2011: 32999},
+          
+          
+          {2012: 33782},
+          {2013: 32999},
+        
+          {2014: 32744},
+          {2015: 32999},
+         
+          {2016: 37806},
+          {2017: 32999},
+      
+          {2018: 36835},
+          {2019: 32999},
+
+          {2020: 38824},
+          
+          ],
+        resultHtml: "… has increased by more than 650 percent. In 2015, more Americans died from drug overdoses than from car accidents and gun homicides combined.<br><br><p>It’s the worst drug overdose epidemic in American history, spurred by rising drug abuse, increased availability of prescription opioids and an influx of potent synthetics like fentanyl and carfentanil. Drug overdoses are now the leading cause of death for Americans under 50.“It’s horrifying,” said Dr. Dan Ciccarone, a heroin researcher and a professor of family and community medicine at the University of California, San Francisco. “It’s not even the magnitude — it’s the steepness at which it’s climbing.” Preliminary numbers for 2017 suggest that overdose deaths are growing at a rate comparable to the height of the H.I.V. epidemic.</p> ",
+        // unit: "Pts",
+        lastPointShownAt: "2002", 
+        precision: 0, 
+        // yAxisMin: ,
+        yAxisMax: 50000,
+      };
+      questions.push(question);
+      // ----- for additional questions, copy TO here 
 
       var myChart = youdrawit
         .chart()
