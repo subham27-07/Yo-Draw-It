@@ -45,16 +45,7 @@
       var question = {};
      
       var globals = { 
-        default: "en",
-        header: "",
         
-        scoreButtonText: "I want to see how well I did on the datasketches quiz!",
-        // scoreButtonTooltip: "Click here to see your result",
-        // scoreTitle: "Your result:",
-        // scoreHtml: "Next time you can do better!",
-        scoreHtml: [{lower: 0, upper: 50, html: 'That wasn\'t much, was it?? You should follow datasketches more closely!<br>Thank you for taking the quiz!'}, 
-        {lower: 50, upper: 80, html: 'Congratulations, that\'s a good score!<br>Thank you for taking the quiz!'},
-        {lower: 81, upper: 101, html: 'Wow, what a score! You are amazing!!<br>Thank you for taking the quiz!'},],
       };
 
     
@@ -218,7 +209,7 @@
 
       var myChart = youdrawit
         .chart()
-        .globals(globals)
+        // .globals(globals)
         .questions(questions);
 
       d3.select("body")
