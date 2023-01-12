@@ -10,7 +10,30 @@
       .intro{
         text-align: justify;
         text-justify: inter-word;
+        font-family: "Times New Roman", Times, serif;
       }
+      .intro1{
+        font-size:2.5vw;
+        color: rgb(0, 0, 0);
+        font-family: "Times New Roman", Times, serif;
+      }
+      .intro2{
+        font-size: 22px;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .intro4{
+        font-size: 25px;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .intro3{
+        text-align: justify;
+        text-justify: inter-word;
+        font-size: 22px;
+        font-family: "Times New Roman", Times, serif;
+      }
+
     </style>
   </head>
 
@@ -38,10 +61,10 @@
 
       // ----- for additional questions, copy FROM here
       question = {
-        heading: "You Draw It: Just How Bad Is the Drug Overdose Epidemic?",
-        subHeading: "<br><div class ='intro'>How does the surge in drug overdoses compare with other causes of death in the U.S.? Draw your guesses on the charts below.</div> <br><br> Since 1990, the number of Americans who have died every year from car accidents... <br> \
+        heading: "<div class ='intro1'>You Draw It: Just How Bad Is the Drug Overdose Epidemic?</div>",
+        subHeading: "<br><br><div class ='intro4'>How does the surge in drug overdoses compare with other causes of death in the U.S.? Draw your guesses on the charts below. <br><br> Since 1990, the number of Americans who have died every year from car accidents... <br> </div>\
         ",
-        resultHtml: "<div class ='intro'>… has dipped, risen slowly but then declined, in part as a result of safer cars and improved road safety. Recessions and increasing gas prices can sometimes lead to a temporary drop in car accident fatalities, as seen in the late 2000s. Deaths are on the rise again recently, perhaps because of more distracted driving.</div>",
+        resultHtml: "<div class ='intro3'>… has dipped, risen slowly but then declined, in part as a result of safer cars and improved road safety. Recessions and increasing gas prices can sometimes lead to a temporary drop in car accident fatalities, as seen in the late 2000s. Deaths are on the rise again recently, perhaps because of more distracted driving.</div>",
         // unit: "%",
         precision: 0,
         lastPointShownAt: "1994",
@@ -85,29 +108,32 @@
 
       // ----- for additional questions, copy FROM here
       question = { 
-        heading: "Since 1990, the number of Americans who have died every year from guns...",
+        heading: "<div class ='intro4'>Since 1990, the number of Americans who have died every year from guns...</div>",
         subHeading: "", 
         data: [
-          {"1998": 32000}, 
-          {"2002": 22000}, 
-          {"2006": 18000}, 
-          {"2010": 18500}, 
-          {"2014": 25000}, 
-          {"2018": 22400},
+      
+          {"2005": 30540}, 
+          {"2014": 33508}, 
+          {"2015": 36132}, 
+          {"2016": 38551}, 
+          {"2017": 39673},
+          {"2018": 39615},
+          {"2019": 39566},
+          {"2020": 45055},
           ],
-        resultHtml: "<div class ='intro'>… has been slowly rising after a drop in the 1990s. Gun deaths, most of which are suicides, increased by 8 percent in 2015, the largest single-year jump since the C.D.C. began keeping computerized death records.</div>",
+        resultHtml: "<div class ='intro3'>… has been slowly rising after a drop in the 1990s. Gun deaths, most of which are suicides, increased by 8 percent in 2015, the largest single-year jump since the C.D.C. began keeping computerized death records.</div>",
         // unit: "Pts",
-        lastPointShownAt: "2002", 
+        lastPointShownAt: "2014", 
         precision: 0, 
         // yAxisMin: ,
-        yAxisMax: 50000,
+        yAxisMax: 60000,
       };
       questions.push(question);
       // ----- for additional questions, copy TO here   
 
       // ----- for additional questions, copy FROM here
       question = { 
-        heading: "Since 1990, the number of Americans who have died every year from H.I.V...",
+        heading: "<div class ='intro4'>Since 1990, the number of Americans who have died every year from H.I.V...</div?",
         subHeading: "", 
         data: [
         {2008: 18465},
@@ -128,7 +154,7 @@
          {2019: 16230},
 
           ],
-        resultHtml: "<div class ='intro'>… has spiked and then plummeted. By the mid-1990s, over 40,000 people were dying from H.I.V. each year, but death rates fell sharply with the development of antiretroviral treatments. Nevertheless, H.I.V. remains a leading cause of death for those 25 to 44, particularly among black men.</div>",
+        resultHtml: "<div class ='intro3'>… has spiked and then plummeted. By the mid-1990s, over 40,000 people were dying from H.I.V. each year, but death rates fell sharply with the development of antiretroviral treatments. Nevertheless, H.I.V. remains a leading cause of death for those 25 to 44, particularly among black men.</div>",
         // unit: "Pts",
         lastPointShownAt: "2010", 
         precision: 0, 
@@ -140,7 +166,7 @@
 
       // ----- for additional questions, copy FROM here
       question = { 
-        heading: "Since 1999, the number of Americans who have died every year from drug overdoses...",
+        heading: "<div class ='intro4'>Since 1999, the number of Americans who have died every year from drug overdoses...</div>",
         subHeading: "", 
         data: [
           {1999: 16894},
@@ -180,7 +206,7 @@
           {2020: 91799},
           
           ],
-        resultHtml: "<div class ='intro'>… has increased by more than 650 percent. In 2015, more Americans died from drug overdoses than from car accidents and gun homicides combined.<br><br>It’s the worst drug overdose epidemic in American history, spurred by rising drug abuse, increased availability of prescription opioids and an influx of potent synthetics like fentanyl and carfentanil. Drug overdoses are now the leading cause of death for Americans under 50.“It’s horrifying,” said Dr. Dan Ciccarone, a heroin researcher and a professor of family and community medicine at the University of California, San Francisco. “It’s not even the magnitude — it’s the steepness at which it’s climbing.” Preliminary numbers for 2017 suggest that overdose deaths are growing at a rate comparable to the height of the H.I.V. epidemic.</div> ",
+        resultHtml: "<div class ='intro3'>… has increased by more than 650 percent. In 2015, more Americans died from drug overdoses than from car accidents and gun homicides combined.<br><br>It’s the worst drug overdose epidemic in American history, spurred by rising drug abuse, increased availability of prescription opioids and an influx of potent synthetics like fentanyl and carfentanil. Drug overdoses are now the leading cause of death for Americans under 50.“It’s horrifying,” said Dr. Dan Ciccarone, a heroin researcher and a professor of family and community medicine at the University of California, San Francisco. “It’s not even the magnitude — it’s the steepness at which it’s climbing.” Preliminary numbers for 2017 suggest that overdose deaths are growing at a rate comparable to the height of the H.I.V. epidemic.</div> ",
         // unit: "Pts",
         lastPointShownAt: "2001", 
         precision: 0, 
