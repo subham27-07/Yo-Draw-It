@@ -1,230 +1,337 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="utf-8">
-
-  <head>
-    <title>You Draw It: Just How Bad Is the Drug Overdose Epidemic?</title>
-    <meta name="viewport" content="width=device-width,user-scalable=yes,initial-scale=1,minimum-scale=1">
-    <link rel="stylesheet" href="https://ee2dev.github.io/ydi/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <style>
-      .intro{
-        text-align: justify;
-        text-justify: inter-word;
-        font-family: "Times New Roman", Times, serif;
+  <title>You Draw It: Just How Bad Is the Drug Overdose Epidemic?</title>
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, minimum-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Inter:400,700|Indie+Flower" rel="stylesheet">
+  <link rel="stylesheet" href="https://ee2dev.github.io/ydi/css/style.css">
+  <style>
+    body {
+      background: #f7f5ef;
+      color: #222;
+      font-family: 'Inter', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .hero {
+      width: 100vw;
+      min-height: 320px;
+      background: url('https://i.ytimg.com/vi/GmPeUYBLuBU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLDcA_uQy3y1YI-ah7mYgJ9UzIOvvg') center center/cover no-repeat;
+      /* TODO: Replace the above URL with your own newspaper image */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 0 48px 0;
+    }
+    .hero-card {
+      background: #fff;
+      border: 3px solid #222;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      border-radius: 4px;
+      padding: 40px 32px 32px 32px;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: #222;
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #444;
+      margin-bottom: 0;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      padding: 0 16px 40px 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      padding: 2px 24px 32px 24px;
+      transition: box-shadow 0.2s;
+      text-align: center;
+      position: relative;
+      border: 3px solid #222; /* Classic joined border */
+      margin-bottom: 0;
+      overflow: visible;
+    }
+    .intro1, .intro4 {
+      color: #222;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .intro2, .intro3 {
+      color: #444;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    a, a:visited {
+      color: #b22222;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #e63946;
+    }
+    .chart {
+      margin-top: 24px;
+    }
+    .card .intro4:first-child, .card .intro1:first-child {
+      margin-top: 0 !important;
+    }
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.5rem;
       }
-      .intro1{
-        font-size:2.5vw;
-        color: rgb(0, 0, 0);
-        font-family: "Times New Roman", Times, serif;
+      .hero-card, .card {
+        padding: 18px 8px 18px 8px;
       }
-      .intro2{
-        font-size: 22px;
-        font-family: "Times New Roman", Times, serif;
+      main {
+        padding: 0 2vw 24px 2vw;
       }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-card">
+      <div class="hero-title">You Draw It:<br><span style="font-size:1.6rem;font-weight:400;">Just How Bad Is the Drug Overdose Epidemic?</span></div>
+    </div>
+  </div>
+  <main>
+    <div class="card" style="overflow:visible;">
+      <div id="ydi-container"></div>
+    </div>
+  </main>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://ee2dev.github.io/ydi/js/youdrawit.min.js"></script>
+  <script>
+    var questions = [];
+    var question = {};
+   
+    var globals = { 
+      // default: "en",
+      // header: "",
+      
+      // scoreButtonText: "I want to see how well I did on the datasketches quiz!",
+      // // scoreButtonTooltip: "Click here to see your result",
+      // // scoreTitle: "Your result:",
+      // // scoreHtml: "Next time you can do better!",
+      // scoreHtml: [{lower: 0, upper: 50, html: 'That wasn\'t much, was it?? You should follow datasketches more closely!<br>Thank you for taking the quiz!'}, 
+      // {lower: 50, upper: 80, html: 'Congratulations, that\'s a good score!<br>Thank you for taking the quiz!'},
+      // {lower: 81, upper: 101, html: 'Wow, what a score! You are amazing!!<br>Thank you for taking the quiz!'},],
+    };
 
-      .intro4{
-        font-size: 25px;
-        font-family: "Times New Roman", Times, serif;
-      }
+  
 
-      .intro3{
-        text-align: justify;
-        text-justify: inter-word;
-        font-size: 22px;
-        font-family: "Times New Roman", Times, serif;
-      }
-
-    </style>
-  </head>
-
-  <body>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://ee2dev.github.io/ydi/js/youdrawit.min.js"></script>    
-    <script>
-      var questions = [];
-      var question = {};
-     
-      var globals = { 
-        // default: "en",
-        // header: "",
+    // ----- for additional questions, copy FROM here
+    question = {
+      // heading: "<div class ='intro1'>You Draw It: Just How Bad Is the Drug Overdose Epidemic?</div>",
+      subHeading: "<div class ='intro4'>How does the surge in drug overdoses compare with other causes of death in the U.S.? Draw your guesses on the charts below. <br><br> Since 1990, the number of Americans who have died every year from car accidents... <br> </div>",
+      resultHtml: "<div class ='intro3'>… has dipped, risen slowly but then declined, in part as a result of safer cars and improved road safety. Recessions and increasing gas prices can sometimes lead to a temporary drop in car accident fatalities, as seen in the late 2000s. Deaths are on the rise again recently, perhaps because of more distracted driving.</div>",
+      // unit: "%",
+      precision: 0,
+      lastPointShownAt: "1994",
+      // yAxisMin: ,
+      yAxisMax: 60000, 
+      lessTopMargin: true, // Reduce top margin for this question
+      data: [
+        {1990: 44600}, 
+        {1992: 39205}, 
+        {1994: 40716},
+        {1996: 42065},
         
-        // scoreButtonText: "I want to see how well I did on the datasketches quiz!",
-        // // scoreButtonTooltip: "Click here to see your result",
-        // // scoreTitle: "Your result:",
-        // // scoreHtml: "Next time you can do better!",
-        // scoreHtml: [{lower: 0, upper: 50, html: 'That wasn\'t much, was it?? You should follow datasketches more closely!<br>Thank you for taking the quiz!'}, 
-        // {lower: 50, upper: 80, html: 'Congratulations, that\'s a good score!<br>Thank you for taking the quiz!'},
-        // {lower: 81, upper: 101, html: 'Wow, what a score! You are amazing!!<br>Thank you for taking the quiz!'},],
-      };
-
+        {1998: 41501},
+       
+        {2000: 41945},
+        
+        {2002: 43005},
+       
+        {2004: 42836}, 
+      
+        {2006: 42708},
+     
+        {2008: 37423},
+       
+        {2010: 32999},
+        
+        {2012: 33782},
+      
+        {2014: 32744},
+       
+        {2016: 37806},
     
+        {2018: 36835},
 
-      // ----- for additional questions, copy FROM here
-      question = {
-        heading: "<div class ='intro1'>You Draw It: Just How Bad Is the Drug Overdose Epidemic?</div>",
-        subHeading: "<br><br><div class ='intro4'>How does the surge in drug overdoses compare with other causes of death in the U.S.? Draw your guesses on the charts below. <br><br> Since 1990, the number of Americans who have died every year from car accidents... <br> </div>\
-        ",
-        resultHtml: "<div class ='intro3'>… has dipped, risen slowly but then declined, in part as a result of safer cars and improved road safety. Recessions and increasing gas prices can sometimes lead to a temporary drop in car accident fatalities, as seen in the late 2000s. Deaths are on the rise again recently, perhaps because of more distracted driving.</div>",
-        // unit: "%",
-        precision: 0,
-        lastPointShownAt: "1994",
-        // yAxisMin: ,
-        yAxisMax: 60000, 
-        data: [
-          {1990: 44600}, 
-          {1992: 39205}, 
-          {1994: 40716},
-          {1996: 42065},
-          
-          {1998: 41501},
-         
-          {2000: 41945},
-          
-          {2002: 43005},
-         
-          {2004: 42836}, 
+        {2020: 38824},
+        {2021: 42915},
         
-          {2006: 42708},
+        ],
+    };
+    questions.push(question);
+    // ----- for additional questions, copy TO here  
+
+    // ----- for additional questions, copy FROM here
+    question = { 
+      heading: "<div class ='intro4'>Since 1990, the number of Americans who have died every year from guns...</div>",
+      subHeading: "", 
+      data: [
+    
+        {"2005": 30540}, 
+        {"2014": 33508}, 
+        {"2015": 36132}, 
+        {"2016": 38551}, 
+        {"2017": 39673},
+        {"2018": 39615},
+        {"2019": 39566},
+        {"2020": 45055},
+        ],
+      resultHtml: "<div class ='intro3'>… has been slowly rising after a drop in the 1990s. Gun deaths, most of which are suicides, increased by 8 percent in 2015, the largest single-year jump since the C.D.C. began keeping computerized death records.</div>",
+      // unit: "Pts",
+      lastPointShownAt: "2014", 
+      precision: 0, 
+      // yAxisMin: ,
+      yAxisMax: 60000,
+    };
+    questions.push(question);
+    // ----- for additional questions, copy TO here   
+
+    // ----- for additional questions, copy FROM here
+    question = { 
+      heading: "<div class ='intro4'>Since 1990, the number of Americans who have died every year from H.I.V...</div?",
+      subHeading: "", 
+      data: [
+      {2008: 18465},
+      {2009: 17955},
+       {2010: 16701},
+       {2011: 16251},
        
-          {2008: 37423},
-         
-          {2010: 32999},
-          
-          {2012: 33782},
-        
-          {2014: 32744},
-         
-          {2016: 37806},
-      
-          {2018: 36835},
-
-          {2020: 38824},
-          {2021: 42915},
-          
-          ],
-      };
-      questions.push(question);
-      // ----- for additional questions, copy TO here  
-
-      // ----- for additional questions, copy FROM here
-      question = { 
-        heading: "<div class ='intro4'>Since 1990, the number of Americans who have died every year from guns...</div>",
-        subHeading: "", 
-        data: [
-      
-          {"2005": 30540}, 
-          {"2014": 33508}, 
-          {"2015": 36132}, 
-          {"2016": 38551}, 
-          {"2017": 39673},
-          {"2018": 39615},
-          {"2019": 39566},
-          {"2020": 45055},
-          ],
-        resultHtml: "<div class ='intro3'>… has been slowly rising after a drop in the 1990s. Gun deaths, most of which are suicides, increased by 8 percent in 2015, the largest single-year jump since the C.D.C. began keeping computerized death records.</div>",
-        // unit: "Pts",
-        lastPointShownAt: "2014", 
-        precision: 0, 
-        // yAxisMin: ,
-        yAxisMax: 60000,
-      };
-      questions.push(question);
-      // ----- for additional questions, copy TO here   
-
-      // ----- for additional questions, copy FROM here
-      question = { 
-        heading: "<div class ='intro4'>Since 1990, the number of Americans who have died every year from H.I.V...</div?",
-        subHeading: "", 
-        data: [
-        {2008: 18465},
-        {2009: 17955},
-         {2010: 16701},
-         {2011: 16251},
-         
-         {2012: 15980},
-         {2013: 15880},
-       
-         {2014: 16128},
-         {2015: 15818},
-        
-         {2016: 16371},
-         {2017: 16350},
+       {2012: 15980},
+       {2013: 15880},
      
-         {2018: 16209},
-         {2019: 16230},
+       {2014: 16128},
+       {2015: 15818},
+     
+       {2016: 16371},
+       {2017: 16350},
+   
+       {2018: 16209},
+       {2019: 16230},
 
-          ],
-        resultHtml: "<div class ='intro3'>… has spiked and then plummeted. By the mid-1990s, over 40,000 people were dying from H.I.V. each year, but death rates fell sharply with the development of antiretroviral treatments. Nevertheless, H.I.V. remains a leading cause of death for those 25 to 44, particularly among black men.</div>",
-        // unit: "Pts",
-        lastPointShownAt: "2010", 
-        precision: 0, 
-        // yAxisMin: ,
-        yAxisMax: 30000,
-      };
-      questions.push(question);
-      // ----- for additional questions, copy TO here   
+        ],
+      resultHtml: "<div class ='intro3'>… has spiked and then plummeted. By the mid-1990s, over 40,000 people were dying from H.I.V. each year, but death rates fell sharply with the development of antiretroviral treatments. Nevertheless, H.I.V. remains a leading cause of death for those 25 to 44, particularly among black men.</div>",
+      // unit: "Pts",
+      lastPointShownAt: "2010", 
+      precision: 0, 
+      // yAxisMin: ,
+      yAxisMax: 30000,
+    };
+    questions.push(question);
+    // ----- for additional questions, copy TO here   
 
-      // ----- for additional questions, copy FROM here
-      question = { 
-        heading: "<div class ='intro4'>Since 1999, the number of Americans who have died every year from drug overdoses...</div>",
-        subHeading: "", 
-        data: [
-          {1999: 16894},
-          
-          {2000: 17415},
-         
-          {2001: 19394},
-          
-          {2002: 23518},
-          {2003: 25785},
-         
-          {2004: 27424},
-          {2005: 29813}, 
+    // ----- for additional questions, copy FROM here
+    question = { 
+      heading: "<div class ='intro4'>Since 1999, the number of Americans who have died every year from drug overdoses...</div>",
+      subHeading: "", 
+      data: [
+        {1999: 16894},
         
-          {2006: 34425},
-          {2007: 36010},
+        {2000: 17415},
        
-          {2008: 36450},
-          {2009: 37004},
-         
-          {2010: 38329},
-          {2011: 41340},
-          
-          
-          {2012: 41502},
-          {2013: 43982},
+        {2001: 19394},
         
-          {2014: 47055},
-          {2015: 52404},
-         
-          {2016: 63632},
-          {2017: 70237},
+        {2002: 23518},
+        {2003: 25785},
+       
+        {2004: 27424},
+        {2005: 29813}, 
       
-          {2018: 67367},
-          {2019: 70630},
+        {2006: 34425},
+        {2007: 36010},
+     
+        {2008: 36450},
+        {2009: 37004},
+       
+        {2010: 38329},
+        {2011: 41340},
+        
+        
+        {2012: 41502},
+        {2013: 43982},
+      
+        {2014: 47055},
+        {2015: 52404},
+       
+        {2016: 63632},
+        {2017: 70237},
+    
+        {2018: 67367},
+        {2019: 70630},
 
-          {2020: 91799},
-          
-          ],
-        resultHtml: "<div class ='intro3'>… has increased by more than 650 percent. In 2015, more Americans died from drug overdoses than from car accidents and gun homicides combined.<br><br>It’s the worst drug overdose epidemic in American history, spurred by rising drug abuse, increased availability of prescription opioids and an influx of potent synthetics like fentanyl and carfentanil. Drug overdoses are now the leading cause of death for Americans under 50.“It’s horrifying,” said Dr. Dan Ciccarone, a heroin researcher and a professor of family and community medicine at the University of California, San Francisco. “It’s not even the magnitude — it’s the steepness at which it’s climbing.” Preliminary numbers for 2017 suggest that overdose deaths are growing at a rate comparable to the height of the H.I.V. epidemic.</div> ",
-        // unit: "Pts",
-        lastPointShownAt: "2001", 
-        precision: 0, 
-        // yAxisMin: ,
-        yAxisMax: 110000,
-      };
-      questions.push(question);
-      // ----- for additional questions, copy TO here 
+        {2020: 91799},
+        
+        ],
+      resultHtml: "<div class ='intro3'>… has increased by more than 650 percent. In 2015, more Americans died from drug overdoses than from car accidents and gun homicides combined.<br><br>It’s the worst drug overdose epidemic in American history, spurred by rising drug abuse, increased availability of prescription opioids and an influx of potent synthetics like fentanyl and carfentanil. Drug overdoses are now the leading cause of death for Americans under 50.“It’s horrifying,” said Dr. Dan Ciccarone, a heroin researcher and a professor of family and community medicine at the University of California, San Francisco. “It’s not even the magnitude — it’s the steepness at which it’s climbing.” Preliminary numbers for 2017 suggest that overdose deaths are growing at a rate comparable to the height of the H.I.V. epidemic.</div> ",
+      // unit: "Pts",
+      lastPointShownAt: "2001", 
+      precision: 0, 
+      // yAxisMin: ,
+      yAxisMax: 110000,
+      extraBottomMargin: true, // Add extra bottom margin for vertical x labels
+      shortYearLabels: true, // Show short year labels on x-axis
+    };
+    questions.push(question);
+    // ----- for additional questions, copy TO here 
 
-      var myChart = youdrawit
-        .chart()
-        .globals(globals)
-        .questions(questions);
+    var myChart = youdrawit
+      .chart()
+      .globals(globals)
+      .questions(questions);
+    d3.select("#ydi-container")
+      .append("div")
+      .attr("class", "chart")
+      .call(myChart);
 
-      d3.select("body")
-        .append("div")
-        .attr("class", "chart")
-        .call(myChart);
-    </script>
-  </body>
+    // Make x-axis labels vertical and short for the last question (drug overdose)
+    setTimeout(function() {
+      // Find all x axes
+      var xAxes = d3.selectAll('.x.axis');
+      // Only target the last chart's x axis
+      var lastXAxis = xAxes.nodes()[xAxes.size() - 1];
+      if (lastXAxis) {
+        d3.select(lastXAxis).selectAll('text')
+          .text(function(d) {
+            // d is the year value, e.g. 1999, 2000, 2001, etc.
+            var year = d;
+            if (typeof year === 'string' && year.length === 4) {
+              return year.slice(2);
+            }
+            if (typeof year === 'number') {
+              var y = year % 100;
+              return (y < 10 ? '0' : '') + y;
+            }
+            return year;
+          })
+          .attr('transform', 'rotate(-90)')
+          .attr('text-anchor', 'end')
+          .attr('dx', '-0.5em')
+          .attr('dy', '-0.2em');
+      }
+    }, 500);
+  </script>
+</body>
 </html>
